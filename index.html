@@ -1,9 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to Nandini's Surprise!</title>
+    <title>Welcome to Nanniiii's Surprise!</title>
+    <link rel="stylesheet" href="assets/styles/style.css" />
   </head>
   <body>
-    <h1>Coming Soon: Magical Welcome Page</h1>
+    <div id="welcome-box">
+      <h1>Hi Nanniiii! 💙</h1>
+      <p>Enter your special password to unlock your surprise:</p>
+      <input type="password" id="pw-input" placeholder="Enter password">
+      <button onclick="checkPassword()">Unlock</button>
+      <p id="error-msg" class="hidden" style="color:#d32f2f;">Wrong password, try again my love!</p>
+      <div id="greeting" class="hidden">
+        <h2>💖 Welcome, Nandini Sharma! 💖</h2>
+        <p>You're about to experience something magical from Aadi!</p>
+        <audio controls autoplay class="hidden" id="welcome-audio">
+          <source src="assets/audio/love-theme.mp3" type="audio/mpeg">
+        </audio>
+        <div class="hidden" id="confetti"></div>
+      </div>
+    </div>
+    <script src="assets/scripts/welcome.js"></script>
   </body>
 </html>
