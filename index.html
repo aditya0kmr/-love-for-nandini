@@ -1,27 +1,150 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Welcome to Nanniiii's Surprise!</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Nanniiii's Surprise! 💙</title>
     <link rel="stylesheet" href="assets/styles/style.css" />
-  </head>
-  <body>
-            <!-- Spline 3D Heart Animation -->
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.0/build/spline-viewer.js"></script>
-        <spline-viewer url="https://prod.spline.design/aYBvTL4xuWdzsIrR/scene.splinecode" style="width: 100%; height: 400px; border-radius: 1em; margin-bottom: 2em;"></spline-viewer>    <div id="welcome-box">
-      <h1>Hi Nanniiii! 💙</h1>
-      <p>Enter your special password to unlock your surprise:</p>
-      <input type="password" id="pw-input" placeholder="Enter password">
-      <button onclick="checkPassword()">Unlock</button>
-      <p id="error-msg" class="hidden" style="color:#d32f2f;">Wrong password, try again my love!</p>
-      <div id="greeting" class="hidden">
-        <h2>💖 Welcome, Nandini Sharma! 💖</h2>
-        <p>You're about to experience something magical from Aadi!</p>
-        <audio controls autoplay class="hidden" id="welcome-audio">
-          <source src="assets/audio/love-theme.mp3" type="audio/mpeg">
-        </audio>
-        <div class="hidden" id="confetti"></div>
-      </div>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 40px;
+            max-width: 600px;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .spline-container {
+            width: 100%;
+            height: 400px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .password-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        input[type="password"] {
+            width: 80%;
+            padding: 15px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: scale(1.05);
+        }
+        
+        .error-msg {
+            color: #ff6b6b;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Spline 3D Heart Animation -->
+        <div class="spline-container">
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.0/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/aYBvTL4xuWdzsIrR/scene.splinecode" style="width: 100%; height: 100%;"></spline-viewer>
+        </div>
+        
+        <div id="password-section">
+            <h1>Hi Nanniiii! 💙</h1>
+            <p style="font-size: 1.2rem; margin: 20px 0;">Enter your special password to unlock your surprise</p>
+            
+            <div class="password-box">
+                <input type="password" id="pw-input" placeholder="Enter password" />
+                <br>
+                <button onclick="checkPassword()">Unlock 🔓</button>
+                <p id="error-msg" class="error-msg hidden">Wrong password, try again my love! ❤️</p>
+            </div>
+        </div>
+        
+        <div id="success-section" class="hidden">
+            <h2>🎉 Welcome, Nandini Sharma! 🎉</h2>
+            <p style="font-size: 1.3rem;">Get ready for something magical from Aadi!</p>
+            <button onclick="goToNextPage()" style="margin-top: 20px;">Continue to Your Surprise 💝</button>
+        </div>
     </div>
-    <script src="assets/scripts/welcome.js"></script>
-  </body>
+    
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('pw-input').value;
+            const errorMsg = document.getElementById('error-msg');
+            const passwordSection = document.getElementById('password-section');
+            const successSection = document.getElementById('success-section');
+            
+            // Password: nandini123 (you can change this)
+            if (input === 'nandini123' || input === 'Nandini' || input === 'nanniiii') {
+                passwordSection.classList.add('hidden');
+                successSection.classList.remove('hidden');
+                errorMsg.classList.add('hidden');
+            } else {
+                errorMsg.classList.remove('hidden');
+                input.value = '';
+            }
+        }
+        
+        function goToNextPage() {
+            window.location.href = 'page2.html';
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById('pw-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
 </html>
