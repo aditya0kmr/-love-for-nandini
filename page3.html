@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Beautiful Memories 📸</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .photo-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: slideUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .photo-card:nth-child(1) { animation-delay: 0.1s; }
+        .photo-card:nth-child(2) { animation-delay: 0.2s; }
+        .photo-card:nth-child(3) { animation-delay: 0.3s; }
+        .photo-card:nth-child(4) { animation-delay: 0.4s; }
+        .photo-card:nth-child(5) { animation-delay: 0.5s; }
+        .photo-card:nth-child(6) { animation-delay: 0.6s; }
+        .photo-card:nth-child(7) { animation-delay: 0.7s; }
+        .photo-card:nth-child(8) { animation-delay: 0.8s; }
+        .photo-card:nth-child(9) { animation-delay: 0.9s; }
+        
+        .photo-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+        
+        .photo-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .photo-caption {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .photo-caption h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .photo-caption p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .upload-note {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px auto;
+            max-width: 700px;
+        }
+        
+        .upload-note h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+        
+        .navigation {
+            text-align: center;
+            padding: 50px 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📸 Our Beautiful Memories 📸</h1>
+        <p>Every picture tells our story, Nanniiii ❤️</p>
+    </div>
+    
+    <div class="gallery-container">
+        <div class="upload-note">
+            <h3>📂 Photo Instructions</h3>
+            <p>To add your real photos: Upload images to the <strong>assets/images/</strong> folder in this repository, then update the src attributes in the code below. You can replace these emoji placeholders with your actual photos!</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="photo-card">
+                <div class="photo-placeholder">💑</div>
+                <div class="photo-caption">
+                    <h3>First Meeting</h3>
+                    <p>The moment everything changed</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <div class="photo-placeholder">💝</div>
+                <div class="photo-caption">
+                    <h3>Our First Date</h3>
+                    <p>Unforgettable memories</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <div class="photo-placeholder">🌹</div>
+                <div class="photo-caption">
+                    <h3>Special Moments</h3>
+                    <p>Just you and me</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <div class="photo-placeholder">😊</div>
+                <div class="photo-caption">
+                    <h3>Your Beautiful Smile</h3>
+                    <p>My favorite view</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <div class="photo-placeholder">🌟</div>
+                <div class="photo-caption">
+                    <h3>Adventure Time</h3>
+                    <p>Exploring together</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <div class="photo-placeholder">❤️</div>
+                <div class="photo-caption">
+                    <h3>Love & Laughter</h3>
+                    <p>Our everyday joy</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <div class="photo-placeholder">🌈</div>
+                <div class="photo-caption">
+                    <h3>Sunset Together</h3>
+                    <p>Perfect moments</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <div class="photo-placeholder">💖</div>
+                <div class="photo-caption">
+                    <h3>Selfie Time</h3>
+                    <p>Us being silly</p>
+                </div>
+            </div>
+            
+            <div class="photo-card">
+                <div class="photo-placeholder">✨</div>
+                <div class="photo-caption">
+                    <h3>Making Memories</h3>
+                    <p>Forever together</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <button class="nav-btn" onclick="window.location.href='page2.html'">⬅️ Back to Love Letters</button>
+        <button class="nav-btn" onclick="window.location.href='page4.html'">Final Surprise 🎁 ➡️</button>
+    </div>
+</body>
+</html>
