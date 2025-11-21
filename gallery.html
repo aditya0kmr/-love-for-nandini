@@ -6,6 +6,8 @@
     <title>Magical Gallery | Aadi & Nanniiii</title>
     <link rel="stylesheet" href="assets/styles/style.css" />
     <link rel="stylesheet" href="assets/styles/nav.css" />
+    <!-- Swiper.js CDN (CSS and JS) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <style>
         body {
             margin: 0;
@@ -16,154 +18,161 @@
             min-height: 100vh;
             padding: 20px;
         }
-        
+
         #gallery-container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
             padding: 40px 20px;
         }
-        
+
         h1 {
-            font-size: 3rem;
-            margin-bottom: 30px;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            animation: fadeInDown 1s ease-out;
+            font-size: 3em;
+            margin-bottom: 1em;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: slideDown 1s ease-out;
         }
-        
-        h2 {
-            font-size: 2rem;
-            margin: 50px 0 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        
-        #carousel {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            padding: 40px;
-            border-radius: 20px;
-            margin: 30px auto;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            animation: slideUp 0.8s ease-out;
+
+        /* Swiper Container */
+        .mySwiper {
+            width: 100%;
+            padding-top: 50px;
+            padding-bottom: 50px;
         }
-        
-        #carousel img {
-            max-width: 100%;
-            width: 400px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(25, 118, 210, 0.5);
-            transition: transform 0.3s;
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 300px;
+            height: 400px;
         }
-        
-        #carousel img:hover {
-            transform: scale(1.05);
+
+        /* Gallery Bubble */
+        .gallery-bubble {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: bubbleIn 1s cubic-bezier(.6,-0.38,.45,1.43);
         }
-        
-        #carousel p {
-            margin-top: 15px;
-            font-size: 1.2rem;
-            color: #ffd700;
+
+        .gallery-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 33% 67% 71% 29% / 41% 40% 60% 59%;
+            box-shadow: 0 8px 32px rgba(25, 118, 210, 0.8);
+            margin-bottom: 1em;
+            transition: transform .3s;
+        }
+
+        .gallery-img:hover {
+            transform: scale(1.08) rotate(-3deg);
+        }
+
+        .memory-bubble {
+            background: linear-gradient(90deg, #e1bee7, #bbdefb 95%);
+            color: #1a237e;
+            font-weight: 500;
+            border-radius: 3em 1em 3em 1em / 2em 3em 1em 2em;
+            padding: .7em 1.4em;
+            font-size: 1.09em;
+            box-shadow: 0 3px 11px rgba(186, 104, 200, 0.2);
+            animation: floatBubble 2.1s infinite alternate cubic-bezier(.7,.3,.4,1);
+        }
+
+        @keyframes bubbleIn {
+            from { opacity: 0; transform: scale(.7) translateY(40px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes floatBubble {
+            from { transform: translateY(0); }
+            to { transform: translateY(-12px); }
+        }
+
+        /* Navigation Buttons */
+        .swiper-button-next, .swiper-button-prev {
+            color: #f093fb;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: #f093fb;
+        }
+
+        /* To Next Page Button */
+        #to-games-btn {
+            margin-top: 3em;
+            padding: 1em 2.5em;
+            font-size: 1.3em;
             font-weight: bold;
-        }
-        
-        #carousel button {
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
             border: none;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            border-radius: 25px;
+            border-radius: 50px;
+            color: white;
             cursor: pointer;
-            margin: 0 10px;
-            font-weight: bold;
+            box-shadow: 0 8px 24px rgba(245, 87, 108, 0.4);
             transition: all 0.3s;
-            box-shadow: 0 8px 20px rgba(240, 147, 251, 0.4);
+            animation: pulse 2s infinite;
         }
-        
-        #carousel button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(240, 147, 251, 0.6);
+
+        #to-games-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(245, 87, 108, 0.6);
         }
-        
-        #video-section {
-            margin-top: 50px;
-            animation: slideUp 1s ease-out;
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
-        
-        .yt-video {
-            display: inline-block;
-            margin: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+
+        .page-exit {
+            animation: fadePage .75s linear forwards;
         }
-        
-        .yt-video iframe {
-            border-radius: 10px;
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+
+        @keyframes fadePage {
+            to { opacity: 0; filter: blur(8px); }
         }
     </style>
 </head>
 <body>
-    <!-- Page Navigation Dots -->
-    <div class="nav-dot-container">
-        <div class="nav-dot" data-tooltip="Home" onclick="window.location.href='index.html'"></div>
-        <div class="nav-dot" data-tooltip="Love Letters" onclick="window.location.href='page2.html'"></div>
-        <div class="nav-dot active" data-tooltip="Gallery" onclick="window.location.href='gallery.html'"></div>
-        <div class="nav-dot" data-tooltip="Final Surprise" onclick="window.location.href='page4.html'"></div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <a href="index.html" class="nav-dot" data-tooltip="Home"></a>
+        <a href="page2.html" class="nav-dot" data-tooltip="Love Letters"></a>
+        <a href="gallery.html" class="nav-dot active" data-tooltip="Gallery"></a>
+        <a href="page4.html" class="nav-dot" data-tooltip="Final Surprise"></a>
     </div>
-    
+
     <div id="gallery-container">
         <h1>Our Magical Memories 💙</h1>
         
-        <div id="carousel"></div>
+        <!-- Swiper 3D Gallery -->
+        <div class="swiper mySwiper" id="memory-swiper">
+            <div class="swiper-wrapper">
+                <!-- Slides will be injected by JS -->
+            </div>
+            <!-- Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
         
-        <div id="video-section">
-            <h2>Special Moments Video Collection 🎥</h2>
-            <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px;">Our favorite moments captured in time</p>
-            
-            <!-- YouTube video embeds -->
-            <div class="yt-video">
-                <iframe width="320" height="180" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-                <p style="margin-top: 10px; font-size: 0.9rem;">Our Love Story ❤️</p>
-            </div>
-            
-            <div class="yt-video">
-                <iframe width="320" height="180" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-                <p style="margin-top: 10px; font-size: 0.9rem;">Special Moments 💖</p>
-            </div>
-            
-            <div class="yt-video">
-                <iframe width="320" height="180" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-                <p style="margin-top: 10px; font-size: 0.9rem;">Adventures Together 🌟</p>
-            </div>
-            
-            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">💡 Tip: Replace the YouTube video IDs in the code with your actual videos!</p>
+        <div style="text-align:center; margin-top:2em;">
+            <button id="to-games-btn">To Love Games! 💞</button>
         </div>
     </div>
-    
+
+    <!-- Swiper.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Gallery Script -->
     <script src="assets/scripts/gallery.js"></script>
+
 </body>
 </html>
