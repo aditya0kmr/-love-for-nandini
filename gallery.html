@@ -1,9 +1,169 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Gallery of Love</title>
-  </head>
-  <body>
-    <h1>Coming Soon: Magical Gallery!</h1>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magical Gallery | Aadi & Nanniiii</title>
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/nav.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        #gallery-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin: 50px 0 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        #carousel {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 30px auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        #carousel img {
+            max-width: 100%;
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(25, 118, 210, 0.5);
+            transition: transform 0.3s;
+        }
+        
+        #carousel img:hover {
+            transform: scale(1.05);
+        }
+        
+        #carousel p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        
+        #carousel button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 0 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(240, 147, 251, 0.4);
+        }
+        
+        #carousel button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(240, 147, 251, 0.6);
+        }
+        
+        #video-section {
+            margin-top: 50px;
+            animation: slideUp 1s ease-out;
+        }
+        
+        .yt-video {
+            display: inline-block;
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .yt-video iframe {
+            border-radius: 10px;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Navigation Dots -->
+    <div class="nav-dot-container">
+        <div class="nav-dot" data-tooltip="Home" onclick="window.location.href='index.html'"></div>
+        <div class="nav-dot" data-tooltip="Love Letters" onclick="window.location.href='page2.html'"></div>
+        <div class="nav-dot active" data-tooltip="Gallery" onclick="window.location.href='gallery.html'"></div>
+        <div class="nav-dot" data-tooltip="Final Surprise" onclick="window.location.href='page4.html'"></div>
+    </div>
+    
+    <div id="gallery-container">
+        <h1>Our Magical Memories 💙</h1>
+        
+        <div id="carousel"></div>
+        
+        <div id="video-section">
+            <h2>Special Moments Video Collection 🎥</h2>
+            <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px;">Our favorite moments captured in time</p>
+            
+            <!-- YouTube video embeds -->
+            <div class="yt-video">
+                <iframe width="320" height="180" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Our Love Story ❤️</p>
+            </div>
+            
+            <div class="yt-video">
+                <iframe width="320" height="180" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Special Moments 💖</p>
+            </div>
+            
+            <div class="yt-video">
+                <iframe width="320" height="180" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+                <p style="margin-top: 10px; font-size: 0.9rem;">Adventures Together 🌟</p>
+            </div>
+            
+            <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">💡 Tip: Replace the YouTube video IDs in the code with your actual videos!</p>
+        </div>
+    </div>
+    
+    <script src="assets/scripts/gallery.js"></script>
+</body>
 </html>
