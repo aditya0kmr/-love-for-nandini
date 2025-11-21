@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letters 💌</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 50px 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .quotes-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .quote-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            margin: 30px 0;
+            border-radius: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: slideIn 0.8s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        .quote-card:nth-child(1) { animation-delay: 0.2s; }
+        .quote-card:nth-child(2) { animation-delay: 0.4s; }
+        .quote-card:nth-child(3) { animation-delay: 0.6s; }
+        .quote-card:nth-child(4) { animation-delay: 0.8s; }
+        .quote-card:nth-child(5) { animation-delay: 1s; }
+        
+        .quote-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .quote-author {
+            text-align: right;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ffd700;
+        }
+        
+        .emoji {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+        
+        .navigation {
+            text-align: center;
+            padding: 50px 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 10s infinite;
+            opacity: 0.3;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="header">
+        <h1>💖 Love Letters for Nanniiii 💖</h1>
+        <p>Every moment with you is magical, my love</p>
+    </div>
+    
+    <div class="quotes-container">
+        <div class="quote-card">
+            <span class="emoji">💕</span>
+            <div class="quote-text">
+                "You light up my world like nobody else. Every smile, every laugh, every moment with you makes my heart skip a beat. You're not just my girlfriend, you're my best friend, my soulmate, and my everything."
+            </div>
+            <div class="quote-author">- Your Aadi ❤️</div>
+        </div>
+        
+        <div class="quote-card">
+            <span class="emoji">🌟</span>
+            <div class="quote-text">
+                "Nanniiii, you make ordinary days feel extraordinary. Your laugh is my favorite sound, your smile is my daily dose of happiness. I fall for you more and more every single day."
+            </div>
+            <div class="quote-author">- Aadi, your forever person 😊</div>
+        </div>
+        
+        <div class="quote-card">
+            <span class="emoji">💘</span>
+            <div class="quote-text">
+                "You're the reason I wake up with a smile. You're my favorite notification, my favorite call, my favorite everything. Being with you feels like coming home."
+            </div>
+            <div class="quote-author">- From your biggest admirer 💙</div>
+        </div>
+        
+        <div class="quote-card">
+            <span class="emoji">✨</span>
+            <div class="quote-text">
+                "Nandini Sharma, you're absolutely stunning - inside and out. Your kindness, your intelligence, your beauty... everything about you amazes me. I'm the luckiest person to call you mine."
+            </div>
+            <div class="quote-author">- Aditya, who loves you endlessly 💝</div>
+        </div>
+        
+        <div class="quote-card">
+            <span class="emoji">💞</span>
+            <div class="quote-text">
+                "You're not just my girlfriend, you're my adventure, my comfort, my dream come true. With you, every day is a new chapter in our beautiful love story. Can't wait to create more memories with you!"
+            </div>
+            <div class="quote-author">- Forever yours, Aadi ❤️‍🔥</div>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <button class="nav-btn" onclick="window.location.href='index.html'">⬅️ Back to Home</button>
+        <button class="nav-btn" onclick="window.location.href='page3.html'">Next: Our Memories 📸 ➡️</button>
+    </div>
+    
+    <script>
+        // Create floating hearts
+        const heartsContainer = document.getElementById('hearts');
+        const heartEmojis = ['❤️', '💖', '💕', '💞', '💓', '💙'];
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heartsContainer.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+        
+        // Create hearts periodically
+        setInterval(createHeart, 1000);
+        
+        // Create initial hearts
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createHeart, i * 300);
+        }
+    </script>
+</body>
+</html>
