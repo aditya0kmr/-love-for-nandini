@@ -40,3 +40,25 @@ button:hover {
 }
 
 .hidden { display: none; }
+
+/* Animated transitions for welcome box */
+.animated-in {
+  animation: fadeInPop 2s cubic-bezier(.77,0,.18,1) forwards;
+}
+
+@keyframes fadeInPop {
+  from { opacity: 0; transform: scale(0.8);}
+  to { opacity: 1; transform: scale(1);}
+}
+
+/* Glowing effect for greeting text */
+#greeting h2 {
+  color: #f06292;
+  text-shadow: 0 0 18px #ba68c8, 0 0 30px #40c4ff;
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 8px #ba68c8, 0 0 20px #40c4ff;}
+  100% { text-shadow: 0 0 30px #ba68c8, 0 0 50px #40c4ff;}
+}
