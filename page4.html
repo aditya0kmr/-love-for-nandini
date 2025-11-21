@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You, Nanniiii ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        
+        .final-container {
+            max-width: 800px;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+        
+        .main-message {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 60px 40px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        .love-message {
+            font-size: 1.5rem;
+            line-height: 2;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .signature {
+            font-size: 1.8rem;
+            margin-top: 40px;
+            font-style: italic;
+            color: #ffd700;
+        }
+        
+        .sparkles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .sparkle {
+            position: absolute;
+            animation: sparkle 3s ease-in-out infinite;
+        }
+        
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .nav-btn {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            margin: 10px;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .special-note {
+            background: rgba(255, 215, 0, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 30px;
+            border: 2px solid rgba(255, 215, 0, 0.4);
+        }
+        
+        .special-note h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <div class="sparkles" id="sparkles"></div>
+    
+    <div class="final-container">
+        <div class="main-message">
+            <h1>💖 For My Nanniiii 💖</h1>
+            
+            <div class="love-message">
+                <p>🌟 Nandini Sharma, you are the most amazing person I've ever known. 🌟</p>
+                <br>
+                <p>💕 Every day with you is a blessing. Your smile brightens my darkest days, your laugh is music to my ears, and your love fills my heart with joy. 💕</p>
+                <br>
+                <p>✨ I made this little website just for you because words alone can't express how much you mean to me. You're not just my girlfriend - you're my best friend, my confidant, my happiness, and my everything. ✨</p>
+                <br>
+                <p>💙 Thank you for being you. Thank you for being mine. Thank you for making life so beautiful. 💙</p>
+                <br>
+                <p>💞 I love you more than you'll ever know, and I promise to show you every single day how special you are to me. 💞</p>
+            </div>
+            
+            <div class="signature">
+                Forever yours,<br>
+                Aditya Kumar (Aadi) ❤️
+            </div>
+        </div>
+        
+        <div class="special-note">
+            <h3>🎁 P.S. 🎁</h3>
+            <p style="font-size: 1.2rem; line-height: 1.8;">
+                This is just the beginning of many surprises! I'll keep adding more photos, memories, and special messages to this website. Come back often to see what's new! 😊
+            </p>
+        </div>
+        
+        <div style="margin-top: 40px;">
+            <button class="nav-btn" onclick="window.location.href='index.html'">🏠 Back to Home</button>
+            <button class="nav-btn" onclick="window.location.href='page2.html'">💌 Read Love Letters Again</button>
+        </div>
+    </div>
+    
+    <script>
+        // Create sparkles
+        const sparklesContainer = document.getElementById('sparkles');
+        const sparkleEmojis = ['✨', '💖', '⭐', '💕', '💛', '💜'];
+        
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            sparkle.style.fontSize = (Math.random() * 30 + 20) + 'px';
+            sparkle.style.animationDelay = Math.random() * 2 + 's';
+            sparklesContainer.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 3000);
+        }
+        
+        // Create sparkles periodically
+        setInterval(createSparkle, 500);
+        
+        // Create initial sparkles
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createSparkle, i * 200);
+        }
+    </script>
+</body>
+</html>
