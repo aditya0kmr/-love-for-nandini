@@ -186,8 +186,8 @@
 <script>
   // Replace 'YOUR_API_KEY' with your actual Gemini API key
   // IMPORTANT: For production, use environment variables or backend proxy
-  const API_KEY = 'YOUR_API_KEY_HERE';
-  const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+// API calls now go through our serverless function at /.netlify/functions/generate-poem
+        // This keeps the API key secure on the server sideanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
 
   async function generateContent() {
     const contentType = document.getElementById('content-type').value;
@@ -198,10 +198,6 @@
       return;
     }
     
-    if (API_KEY === 'YOUR_API_KEY_HERE') {
-      alert('⚠️ Please add your Gemini API key to use this feature!');
-      return;
-    }
     
     // Show loading
     document.getElementById('loading').style.display = 'block';
@@ -226,32 +222,29 @@
     }
     
     try {
-      const response = await fetch(`${API_URL}?key=${API_KEY}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          contents: [{
-            parts: [{
-              text: fullPrompt
-            }]
-          }]
-        })
-      });
+      const response = await fetch('/.netlify/functions/generate-poem', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    theme: userPrompt,
+                    type: contentType
+                })
+            });
       
       const data = await response.json();
       
-      if (data.candidates && data.candidates[0]) {
-        const generatedText = data.candidates[0].content.parts[0].text;
-        document.getElementById('generated-text').textContent = generatedText;
-        document.getElementById('result-card').style.display = 'block';
+      if (data.success && data.content) {
+                const generatedText = data.content;
+                document.getElementById('generated-text').textContent = generatedText;
+                document.getElementById('result-card').style.display = 'block';
       } else {
         throw new Error('No response generated');
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('❌ Failed to generate content. Please try again or check your API key.');
+      alert('❌ Failed to generate content. Please try again or try again later.');
     } finally {
       document.getElementById('loading').style.display = 'none';
       document.getElementById('generate-btn').disabled = false;
