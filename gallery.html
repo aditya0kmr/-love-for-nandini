@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="assets/styles/style.css" />
     <link rel="stylesheet" href="assets/styles/nav.css" />
     <!-- Swiper.js CDN (CSS and JS) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>>
+    <!-- Google Handwriting Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Indie+Flower&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -138,6 +140,110 @@
         @keyframes fadePage {
             to { opacity: 0; filter: blur(8px); }
         }
+
+        /* Sticky Notes / Handwritten Notes */
+        .sticky-note-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.6);
+            transition: all 0.3s;
+            z-index: 10;
+            animation: bounce 2s infinite;
+        }
+
+        .sticky-note-icon:hover {
+            transform: scale(1.15) rotate(10deg);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.8);
+        }
+
+        .sticky-note-icon::before {
+            content: "\270D";
+            font-size: 20px;
+            color: white;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Sticky Note Popup Bubble */
+        .sticky-note-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: linear-gradient(135deg, #fff9c4, #fff59d);
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            max-width: 400px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5em;
+            color: #333;
+            text-align: center;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            border: 3px dashed #FFD700;
+        }
+
+        .sticky-note-popup.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .sticky-note-popup .close-btn {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 35px;
+            height: 35px;
+            background: #f5576c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            font-family: Arial, sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .sticky-note-popup .close-btn:hover {
+            transform: rotate(90deg) scale(1.1);
+            background: #d63f54;
+        }
+
+        /* Overlay */
+        .sticky-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .sticky-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        
     </style>
 </head>
 <body>
