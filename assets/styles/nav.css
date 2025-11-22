@@ -202,3 +202,129 @@
         right: 15px;
     }
 }
+
+
+/* ===== ENHANCED FLOATING NAVIGATION MENU ===== */
+
+/* Main navigation menu container - fixed on right side */
+.nav-menu {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, rgba(255, 77, 109, 0.95), rgba(255, 117, 143, 0.95));
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  padding: 15px 10px;
+  box-shadow: 0 10px 40px rgba(255, 77, 109, 0.5), 0 0 20px rgba(255, 117, 143, 0.3);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: slideInRight 0.6s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateY(-50%) translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Individual navigation menu item */
+.nav-menu-item {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.nav-menu-item:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 5px 20px rgba(255, 255, 255, 0.5);
+}
+
+.nav-menu-item.active {
+  background: white;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* Navigation item icon/emoji */
+.nav-menu-item::before {
+  font-size: 24px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Tooltip label */
+.nav-menu-item span {
+  position: absolute;
+  right: 70px;
+  background: rgba(44, 0, 62, 0.95);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, right 0.3s ease;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-menu-item:hover span {
+  opacity: 1;
+  right: 75px;
+}
+
+/* Page-specific icons using ::before pseudo-element */
+.nav-home::before { content: '🏠'; }
+.nav-letters::before { content: '💌'; }
+.nav-gallery::before { content: '🖼️'; }
+.nav-timeline::before { content: '💕'; }
+.nav-ai::before { content: '✨'; }
+.nav-surprise::before { content: '🎁'; }
+
+/* Pulse animation for active page */
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 1);
+  }
+}
+
+.nav-menu-item.active {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .nav-menu {
+    right: 10px;
+    padding: 10px 8px;
+    gap: 10px;
+  }
+  
+  .nav-menu-item {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .nav-menu-item::before {
+    font-size: 20px;
+  }
+}
