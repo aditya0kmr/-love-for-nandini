@@ -62,11 +62,11 @@ function initMemoryGame() {
     // Create cards
     shuffled.forEach((imageSrc, index) => {
         const card = document.createElement('div');
-        card.className = 'memory-card';
+        card.className = 'mem-card';
         card.dataset.image = imageSrc;
         card.dataset.index = index;
         
-        // Card front (question mark)
+        // Card front (questionmem-cardmark)
         const front = document.createElement('div');
         front.className = 'card-front';
         front.textContent = '💞';
