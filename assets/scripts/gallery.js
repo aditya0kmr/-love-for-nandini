@@ -19,6 +19,16 @@ const memories = [
     "Making silly faces! 😄"
 ];
 
+// Flirty Sticky Notes for each image
+const stickyNotes = [
+    "You looked so adorable here! I couldn't stop staring... 😍",
+    "Remember this? You made my heart skip a beat! 💓",
+    "This is my favorite picture of you, babe! You're stunning! ✨",
+    "I fell for you all over again looking at this! 😘",
+    "You + that smile = my whole world! 🌎💕",
+    "This moment... I knew you were THE ONE! 💍❤️"
+];
+
 // Inject slides dynamically when page loads
 window.onload = () => {
     const wrapper = document.querySelector('.swiper-wrapper');
@@ -29,6 +39,7 @@ window.onload = () => {
         slide.innerHTML = `
             <div class="gallery-bubble">
                 <img src="${img}" alt="memory" class="gallery-img"/>
+                <div class="sticky-note-icon" data-note-index="${i}"></div>
                 <div class="memory-bubble">${memories[i]}</div>
             </div>
         `;
@@ -72,6 +83,45 @@ window.onload = () => {
         document.body.classList.add('page-exit');
         setTimeout(() => window.location.href = "games.html", 800);
     };
+
+    // Sticky Notes Popup Functionality
+    // Create popup HTML elements
+    const overlay = document.createElement('div');
+    overlay.className = 'sticky-overlay';
+    document.body.appendChild(overlay);
+
+    const popup = document.createElement('div');
+    popup.className = 'sticky-note-popup';
+    popup.innerHTML = `
+        <div class="close-btn">&times;</div>
+        <p class="note-content"></p>
+    `;
+    document.body.appendChild(popup);
+
+    // Add click event to all sticky note icons
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('sticky-note-icon')) {
+            const noteIndex = e.target.getAttribute('data-note-index');
+            const noteContent = popup.querySelector('.note-content');
+            noteContent.textContent = stickyNotes[noteIndex];
+            
+            // Show popup and overlay
+            overlay.classList.add('show');
+            popup.classList.add('show');
+        }
+
+        // Close popup when clicking close button
+        if (e.target.classList.contains('close-btn')) {
+            overlay.classList.remove('show');
+            popup.classList.remove('show');
+        }
+    });
+
+    // Close popup when clicking overlay
+    overlay.addEventListener('click', () => {
+        overlay.classList.remove('show');
+        popup.classList.remove('show');
+    });
 
     console.log('Gallery loaded with', images.length, 'memories! 💙');
 };
