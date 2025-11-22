@@ -1,9 +1,205 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Love Games</title>
-  </head>
-  <body>
-    <h1>Coming Soon: Love Games!</h1>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Games & Journey | Aadi & Nanniiii</title>
+    <link rel="stylesheet" href="assets/styles/style.css" />
+    <link rel="stylesheet" href="assets/styles/nav.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 1em 0;
+            font-size: 2.5em;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #games-zone, #timeline-zone {
+            max-width: 1000px;
+            margin: 2em auto;
+            padding: 20px;
+        }
+
+        /* Memory Game Styles */
+        .mem-card {
+            width: 80px;
+            height: 80px;
+            background: #b3e5fc;
+            border-radius: 1em;
+            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.5);
+            position: relative;
+            cursor: pointer;
+            perspective: 1000px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+
+        .mem-card:hover {
+            transform: scale(1.05);
+        }
+
+        .mem-card .front,
+        .mem-card .back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1em;
+            transition: transform 0.6s cubic-bezier(0.7, 0.3, 0.4, 1);
+        }
+
+        .mem-card .front {
+            background: linear-gradient(135deg, #bbdefb, #fce4ec);
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+        }
+
+        .mem-card .back {
+            transform: rotateY(180deg);
+        }
+
+        .mem-card.flipped .front {
+            transform: rotateY(180deg);
+        }
+
+        .mem-card.flipped .back {
+            transform: rotateY(0);
+        }
+
+        .mem-card .back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 1em;
+        }
+
+        /* Timeline Styles */
+        .timeline-item {
+            margin: 1.5em 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.6s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: #FFD700;
+            font-size: 1.2em;
+            margin-bottom: 0.5em;
+        }
+
+        .timeline-event {
+            color: #fce4ec;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        /* Button Styles */
+        #to-letter-btn {
+            display: block;
+            margin: 3em auto;
+            padding: 1em 2.5em;
+            font-size: 1.3em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(245, 87, 108, 0.4);
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        #to-letter-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(245, 87, 108, 0.6);
+        }
+
+        .page-exit {
+            animation: fadePage 0.75s linear forwards;
+        }
+
+        @keyframes fadePage {
+            to { opacity: 0; filter: blur(8px); }
+        }
+
+        h2, h3 {
+            text-align: center;
+            margin: 1em 0;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        #grid {
+            display: flex;
+            gap: 1em;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 2em auto;
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <a href="index.html" class="nav-dot" data-tooltip="Home"></a>
+        <a href="page2.html" class="nav-dot" data-tooltip="Love Letters"></a>
+        <a href="gallery.html" class="nav-dot" data-tooltip="Gallery"></a>
+        <a href="page4.html" class="nav-dot" data-tooltip="Final Surprise"></a>
+    </div>
+
+    <h1>Love Games & Our Journey 💞</h1>
+    
+    <div id="games-zone">
+        <h3>❤️ Memory Match Game ❤️</h3>
+        <div id="grid"></div>
+    </div>
+    
+    <div id="timeline-zone">
+        <h2>💕 Our Love Story Timeline 💕</h2>
+        <div id="timeline"></div>
+    </div>
+    
+    <div style="text-align:center; margin-top:2em;">
+        <button id="to-letter-btn">To Love Letter 💌</button>
+    </div>
+
+    <script src="assets/scripts/games.js"></script>
+
+</body>
 </html>
