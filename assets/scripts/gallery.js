@@ -1,12 +1,12 @@
 // Gallery Carousel JavaScript with Swiper.js
 // Images array - customize photo filenames as needed
 const images = [
-    "assets/images/photo1.jpg",
-    "assets/images/photo2.jpg",
-    "assets/images/photo3.jpg",
-    "assets/images/photo4.jpg",
-    "assets/images/photo5.jpg",
-    "assets/images/photo6.jpg"
+    "assets/images/IMG_20241104_025047.jpg",
+    "assets/images/IMG_20241104_025053.jpg",
+    "assets/images/IMG_20241218_194513.jpg",
+    "assets/images/IMG_20250331_212004_216.jpg",
+    "assets/images/PXL_20241104_025215309.jpg",
+    "assets/images/Snapchat-502024338.jpg"
 ];
 
 // Memory bubbles - creative romantic captions
