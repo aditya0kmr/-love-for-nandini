@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Love Letter Generator | Aadi & Nanniiii</title>
+<link rel="stylesheet" href="assets/styles/style.css" />
+<link rel="stylesheet" href="assets/styles/nav.css" />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #2c003e, #7e1e9c);
+    color: #fff;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  h1 {
+    text-align: center;
+    margin: 2rem 0 1rem;
+    font-weight: 700;
+    font-size: 2.5rem;
+    text-shadow: 0 0 10px #ff6f91;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  .generator-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(255, 92, 141, 0.3);
+    margin-bottom: 20px;
+  }
+  .input-group {
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #ffaad1;
+  }
+  textarea, select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ff5c8d;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c003e;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  textarea:focus, select:focus {
+    outline: none;
+    border-color: #ff4d6d;
+    box-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+  }
+  .generate-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #ff4d6d, #ff758f);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .generate-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 77, 109, 0.6);
+  }
+  .generate-btn:active {
+    transform: scale(0.98);
+  }
+  .generate-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  #result-card {
+    display: none;
+  }
+  #generated-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+    font-family: 'Caveat', cursive;
+  }
+  .copy-btn {
+    padding: 10px 20px;
+    background: #4CAF50;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  .copy-btn:hover {
+    background: #45a049;
+  }
+  #particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ffaad1;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation Dots -->
+<div class="nav-dots">
+  <a href="index.html" class="nav-dot" data-tooltip="Home"></a>
+  <a href="page2.html" class="nav-dot" data-tooltip="Love Letters"></a>
+  <a href="gallery.html" class="nav-dot" data-tooltip="Gallery"></a>
+  <a href="games.html" class="nav-dot" data-tooltip="Timeline"></a>
+  <a href="ai-generator.html" class="nav-dot active" data-tooltip="AI Generator"></a>
+  <a href="page4.html" class="nav-dot" data-tooltip="Final Surprise"></a>
+</div>
+
+<div class="container">
+  <h1>💌 AI Love Letter Generator ✨</h1>
+  
+  <div class="generator-card">
+    <div class="input-group">
+      <label for="content-type">What would you like to generate?</label>
+      <select id="content-type">
+        <option value="love-letter">Love Letter</option>
+        <option value="poem">Romantic Poem</option>
+        <option value="message">Sweet Message</option>
+        <option value="anniversary">Anniversary Wish</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="prompt-input">Describe your feelings or theme...</label>
+      <textarea id="prompt-input" rows="6" placeholder="Example: Write a romantic poem about how her smile brightens my day and makes everything better"></textarea>
+    </div>
+    
+    <button class="generate-btn" id="generate-btn" onclick="generateContent()">
+      💡 Generate with AI
+    </button>
+    
+    <div id="loading" class="loading" style="display:none; margin-top: 20px;">
+      ⏳ Generating your romantic content... Please wait
+    </div>
+  </div>
+  
+  <div class="generator-card" id="result-card">
+    <h2 style="text-align: center; color: #ffaad1; margin-bottom: 20px;">🌹 Your Generated Content 🌹</h2>
+    <div id="generated-text"></div>
+    <button class="copy-btn" onclick="copyText()">📋 Copy to Clipboard</button>
+  </div>
+</div>
+
+<div id="particles"></div>
+
+<script>
+  // Replace 'YOUR_API_KEY' with your actual Gemini API key
+  // IMPORTANT: For production, use environment variables or backend proxy
+  const API_KEY = 'YOUR_API_KEY_HERE';
+  const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+
+  async function generateContent() {
+    const contentType = document.getElementById('content-type').value;
+    const userPrompt = document.getElementById('prompt-input').value.trim();
+    
+    if (!userPrompt) {
+      alert('❤️ Please describe your feelings or theme first!');
+      return;
+    }
+    
+    if (API_KEY === 'YOUR_API_KEY_HERE') {
+      alert('⚠️ Please add your Gemini API key to use this feature!');
+      return;
+    }
+    
+    // Show loading
+    document.getElementById('loading').style.display = 'block';
+    document.getElementById('generate-btn').disabled = true;
+    document.getElementById('result-card').style.display = 'none';
+    
+    // Build prompt based on content type
+    let fullPrompt = '';
+    switch(contentType) {
+      case 'love-letter':
+        fullPrompt = `Write a heartfelt and romantic love letter based on this: ${userPrompt}. Make it emotional, sincere, and deeply romantic.`;
+        break;
+      case 'poem':
+        fullPrompt = `Write a beautiful romantic poem based on this: ${userPrompt}. Make it poetic, touching, and full of emotion.`;
+        break;
+      case 'message':
+        fullPrompt = `Write a sweet and loving message based on this: ${userPrompt}. Keep it warm, affectionate, and heartfelt.`;
+        break;
+      case 'anniversary':
+        fullPrompt = `Write a romantic anniversary wish based on this: ${userPrompt}. Make it celebratory, loving, and memorable.`;
+        break;
+    }
+    
+    try {
+      const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: fullPrompt
+            }]
+          }]
+        })
+      });
+      
+      const data = await response.json();
+      
+      if (data.candidates && data.candidates[0]) {
+        const generatedText = data.candidates[0].content.parts[0].text;
+        document.getElementById('generated-text').textContent = generatedText;
+        document.getElementById('result-card').style.display = 'block';
+      } else {
+        throw new Error('No response generated');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('❌ Failed to generate content. Please try again or check your API key.');
+    } finally {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('generate-btn').disabled = false;
+    }
+  }
+  
+  function copyText() {
+    const text = document.getElementById('generated-text').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      alert('✅ Copied to clipboard!');
+    }).catch(err => {
+      alert('❌ Failed to copy');
+    });
+  }
+  
+  // Particle animation (falling hearts)
+  const particlesCanvas = document.createElement('canvas');
+  const particlesContainer = document.getElementById('particles');
+  particlesContainer.appendChild(particlesCanvas);
+  const ctx = particlesCanvas.getContext('2d');
+  
+  let width, height;
+  let particlesArray = [];
+  
+  class Particle {
+    constructor(){
+      this.x = Math.random() * width;
+      this.y = Math.random() * height - height;
+      this.size = Math.random() * 8 + 4;
+      this.speed = Math.random() * 1 + 0.5;
+      this.angle = Math.random() * 2 * Math.PI;
+      this.spinSpeed = 0.02 + Math.random() * 0.02;
+      this.color = 'rgba(255, 105, 180, 0.8)';
+    }
+    update(){
+      this.y += this.speed;
+      this.angle += this.spinSpeed;
+      if(this.y > height){
+        this.y = -this.size;
+        this.x = Math.random() * width;
+      }
+    }
+    draw(){
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.rotate(this.angle);
+      ctx.beginPath();
+      const size = this.size / 2;
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(0, -size/2, -size, -size*0.75, -size, 0);
+      ctx.bezierCurveTo(-size, size*0.6, 0, size*1.2, 0, size*1.8);
+      ctx.bezierCurveTo(0, size*1.2, size, size*0.6, size, 0);
+      ctx.bezierCurveTo(size, -size*0.75, 0, -size/2, 0, 0);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+  
+  function initParticles() {
+    particlesArray = [];
+    for(let i=0; i<40; i++) {
+      particlesArray.push(new Particle());
+    }
+  }
+  
+  function animateParticles() {
+    ctx.clearRect(0, 0, width, height);
+    particlesArray.forEach(p => {
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  
+  function resizeCanvas(){
+    width = window.innerWidth;
+    height = window.innerHeight;
+    particlesCanvas.width = width;
+    particlesCanvas.height = height;
+  }
+  
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    initParticles();
+  });
+  
+  resizeCanvas();
+  initParticles();
+  animateParticles();
+</script>
+
+</body>
+</html>
