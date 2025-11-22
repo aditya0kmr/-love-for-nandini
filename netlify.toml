@@ -1,0 +1,34 @@
+# Netlify Configuration
+# This file configures your site for Netlify deployment with serverless functions
+
+[build]
+  # Publish directory (your website files)
+  publish = "."
+  
+  # Functions directory (serverless API endpoints)
+  functions = "netlify/functions"
+
+# Redirect rules for API endpoints
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Environment variables (don't put actual values here!)
+# Set these in Netlify dashboard: Site Settings > Environment Variables
+# Required:
+# - GEMINI_API_KEY: Your Gemini AI API key
+
+# Headers for security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+# Cache static assets
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
