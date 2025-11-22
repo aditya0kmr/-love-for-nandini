@@ -68,12 +68,12 @@ function initMemoryGame() {
         
         // Card front (questionmem-cardmark)
         const front = document.createElement('div');
-        front.className = 'card-front';
+        front.className = 'front';
         front.textContent = '💞';
         
         // Card back (image)
         const back = document.createElement('div');
-        back.className = 'card-back';
+        back.className = 'back';
         back.style.backgroundImage = `url(${imageSrc})`;
         back.style.backgroundSize = 'cover';
         back.style.backgroundPosition = 'center';
