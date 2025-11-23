@@ -125,9 +125,9 @@
             <p style="font-size: 1.2rem; margin: 20px 0;">Enter your special password to unlock your surprise</p>
             
             <div class="password-box">
-                <input type="password" id="pw-input" placeholder="Enter password" />
+                <input type="password" id="pw-input" placeholder="Enter password aria-label="Password input" aria-required="true" required />/>
                 <br>
-                <button onclick="checkPassword()">Unlock 🔓</button>
+                <button onclick="checkPassword()">Unlock  aria-label="Check password and unlock surprise">Unlock 🔓</button>
                 <p id="error-msg" class="error-msg hidden">Wrong password, try again my love! ❤️</p>
             </div>
         </div>
@@ -140,21 +140,52 @@
     </div>
     
     <script>
-        function checkPassword() {
-            const input = document.getElementById('pw-input').value;
+function checkPassword() {
+            const input = document.getElementById('pw-input');
             const errorMsg = document.getElementById('error-msg');
             const passwordSection = document.getElementById('password-section');
             const successSection = document.getElementById('success-section');
+            const button = event.target;
+
+            // Input validation
+            const password = input.value.trim();
             
-            // Password: nandini123 (you can change this)
-            if (input === 'forever and always') {
-                passwordSection.classList.add('hidden');
-                successSection.classList.remove('hidden');
-                errorMsg.classList.add('hidden');
-            } else {
+            if (!password) {
+                errorMsg.textContent = 'Please enter a password! 💕';
                 errorMsg.classList.remove('hidden');
-                input.value = '';
+                input.focus();
+                return;
             }
+
+            if (password.length < 3) {
+                errorMsg.textContent = 'Password is too short, try again! ❤️';
+                errorMsg.classList.remove('hidden');
+                return;
+            }
+
+            // Show loading state
+            button.disabled = true;
+            button.textContent = 'Checking... ⏳';
+            errorMsg.classList.add('hidden');
+
+            // Simulate async check (you can replace with actual async validation)
+            setTimeout(() => {
+                // Password check
+                if (password === 'forever and always') {
+                    passwordSection.classList.add('hidden');
+                    successSection.classList.remove('hidden');
+                    errorMsg.classList.add('hidden');
+                } else {
+                    errorMsg.textContent = 'Wrong password, try again my love! ❤️';
+                    errorMsg.classList.remove('hidden');
+                    input.value = '';
+                    input.focus();
+                }
+                
+                // Reset button state
+                button.disabled = false;
+                button.textContent = 'Unlock 🔓';
+            }, 500);
         }
         
         function goToNextPage() {
