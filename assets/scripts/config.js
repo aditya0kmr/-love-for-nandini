@@ -5,7 +5,7 @@ const CONFIG = {
   // Asset Paths
   ASSETS: {
     IMAGES: './assets/images/',
-    AUDIO: './assets/images/',
+    AUDIO: './assets/audio/',
     SCRIPTS: './assets/scripts/',
     STYLES: './assets/styles/',
     MODELS: './assets/models/'
