@@ -89,6 +89,12 @@
         .hidden {
             display: none;
         }
+        
+        /* Hide navigation elements until successful login */
+                .nav-menu.hidden,
+                .nav-dot-container.hidden {
+                                display: none;
+                            }
     </style>
 </head>
 <body>
@@ -97,7 +103,7 @@
         <div class="spline-container">
             <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.0/build/spline-viewer.js"></script>
                 <!-- Floating Navigation Menu -->
-                <div class="nav-menu">
+                <div class="nav-menu hidden">
                             <a href="index.html" class="nav-menu-item nav-home active" title="Home">
                                             <span>Home</span>
                                         </a>
@@ -127,11 +133,11 @@
             <div class="password-box">
                 <input type="password" id="pw-input" placeholder="Enter password aria-label="Password input" aria-required="true" required />/>
                 <br>
-                <button onclick="checkPassword()">Unlock  aria-label="Check password and unlock surprise">Unlock 🔓</button>
+                
                 <p id="error-msg" class="error-msg hidden">Wrong password, try again my love! ❤️</p>
             </div>
         </div>
-        
+            <button onclick="checkPassword()" aria-label="Check password and unlock surprise">Unlock 🔓</button>
         <div id="success-section" class="hidden">
             <h2>🎉 Welcome, Nandini Sharma! 🎉</h2>
             <p style="font-size: 1.3rem;">Get ready for something magical from Aadi!</p>
@@ -174,6 +180,8 @@ function checkPassword() {
                 if (password === 'forever and always') {
                     passwordSection.classList.add('hidden');
                     successSection.classList.remove('hidden');
+                                    document.querySelector('.nav-menu').classList.remove('hidden');
+                                    document.querySelector('.nav-dot-container').classList.remove('hidden');
                     errorMsg.classList.add('hidden');
                 } else {
                     errorMsg.textContent = 'Wrong password, try again my love! ❤️';
@@ -201,7 +209,7 @@ function checkPassword() {
     </script>
 
         <!-- Page Navigation Dots -->
-    <div class="nav-dot-container">
+    <div class="nav-dot-container hidden">
         <div class="nav-dot active" data-tooltip="Home" onclick="window.location.href='index.html'"></div>
         <div class="nav-dot" data-tooltip="Love Letters" onclick="window.location.href='page2.html'"></div>
         <div class="nav-dot" data-tooltip="Our Memories" onclick="window.location.href='page3.html'"></div>
