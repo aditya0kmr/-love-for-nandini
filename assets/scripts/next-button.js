@@ -6,40 +6,46 @@ const nextPageConfig = {
     label: "❤️ Begin Our Journey",
     animationClass: "confetti",
     onClickEffect: heartConfettiEffect,
-    nextPageUrl: "love-letters.html"
+    nextPageUrl: "page2.html"
   },
-  "love-letters.html": {
+  "page2.html": {
     label: "💌 See Our Memories",
     animationClass: "typewriter",
     onClickEffect: envelopeGlowEffect,
+    nextPageUrl: "page3.html"
+  },
+  "page3.html": {
+    label: "🖼️ Discover More",
+    animationClass: "flip-btn",
+    onClickEffect: photoFlipEffect,
+    nextPageUrl: "page4.html"
+  },
+  "page4.html": {
+    label: "🌟 Explore Gallery",
+    animationClass: "stars",
+    onClickEffect: starBurstEffect,
     nextPageUrl: "gallery.html"
   },
   "gallery.html": {
-    label: "🖼️ Relive Our Timeline",
-    animationClass: "flip-btn",
-    onClickEffect: photoFlipEffect,
-    nextPageUrl: "timeline.html"
+    label: "🎮 Play Games",
+    animationClass: "confetti",
+    onClickEffect: heartConfettiEffect,
+    nextPageUrl: "games.html"
   },
-  "timeline.html": {
-    label: "🌟 Next: Create with AI Magic",
+  "games.html": {
+    label: "✨ Create with AI",
     animationClass: "stars",
     onClickEffect: starBurstEffect,
     nextPageUrl: "ai-generator.html"
   },
   "ai-generator.html": {
-    label: "✨ Reveal Your Final Surprise!",
-    animationClass: "confetti",
-    onClickEffect: heartConfettiEffect,
-    nextPageUrl: "final-surprise.html"
+    label: "💖 Read Love Letter",
+    animationClass: "typewriter",
+    onClickEffect: envelopeGlowEffect,
+    nextPageUrl: "letter.html"
   },
-  "final-surprise.html": {
-    label: "🎁 One Last Secret Awaits...",
-    animationClass: "stars",
-    onClickEffect: starBurstEffect,
-    nextPageUrl: "secret-letter.html"
-  },
-  "secret-letter.html": {
-    label: "💖 Replay the Journey",
+  "letter.html": {
+    label: "💖 Back to Start",
     animationClass: "confetti",
     onClickEffect: heartConfettiEffect,
     nextPageUrl: "index.html"
