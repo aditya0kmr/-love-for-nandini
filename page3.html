@@ -60,6 +60,35 @@
             animation: slideUp 0.6s ease-out;
             animation-fill-mode: both;
         }
+
+                .photo-img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(36, 5, 44, 0.78);
+            color: #fff;
+            padding: 10px 14px;
+            font-size: 1.09rem;
+            z-index: 2;
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+        }
+        
+        .photo-emoji {
+            position: absolute;
+            top: 8px;
+            right: 14px;
+            font-size: 2.1em;
+            z-index: 2;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+        }
         
         .photo-card:nth-child(1) { animation-delay: 0.1s; }
         .photo-card:nth-child(2) { animation-delay: 0.2s; }
@@ -175,26 +204,21 @@
         
         <div class="gallery-grid">
             <div class="photo-card">
-                <img src="assets/images/IMG_20241218_194514.jpg" alt="First Meeting" style="width: 100%; height: 300px; object-fit: cover;">                <div class="photo-caption">
-                    <h3>First Meeting</h3>
-                    <p>The moment everything changed</p>
-                </div>
-            </div>
+                <img src="assets/images/IMG_20241218_194514.jpg" alt="First Meeting" class="photo-img">
+                <div class="photo-caption">First Meeting</div>
+                <div class="photo-emoji">💑</div>
+            </div>            
+            <div class="photo-card">
+                <img src="assets/images/IMG_20250308_121038_963.jpg" alt="Our First Date" class="photo-img">
+                <div class="photo-caption">Our First Date</div>
+                <div class="photo-emoji">🌻</div>
+            </div>            </div>
             
             <div class="photo-card">
-                <img src="assets/images/IMG_20250308_121038_963.jpg" alt="Our First Date" style="width: 100%; height: 300px; object-fit: cover;">                <div class="photo-caption">
-                    <h3>Our First Date</h3>
-                    <p>Unforgettable memories</p>
-                </div>
-            </div>
-            
-            <div class="photo-card">
-                <img src="assets/images/IMG_20250315_204935_974.jpg" alt="Special Moments" style="width: 100%; height: 300px; object-fit: cover;">                <div class="photo-caption">
-                    <h3>Special Moments</h3>
-                    <p>Just you and me</p>
-                </div>
-            </div>
-            
+                <img src="assets/images/IMG_20250315_204935_974.jpg" alt="Special Moments" class="photo-img">
+                <div class="photo-caption">Special Moments</div>
+                <div class="photo-emoji">✨</div>
+            </div>            
             <div class="photo-card">
                 <img src="assets/images/IMG_20250315_204937_516.jpg" alt="Your Beautiful Smile" style="width: 100%; height: 300px; object-fit: cover;">                <div class="photo-caption">
                     <h3>Your Beautiful Smile</h3>
