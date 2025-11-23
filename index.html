@@ -131,13 +131,13 @@
             <p style="font-size: 1.2rem; margin: 20px 0;">Enter your special password to unlock your surprise</p>
             
             <div class="password-box">
-                <input type="password" id="pw-input" placeholder="Enter password aria-label="Password input" aria-required="true" required />/>
+                <input type="password" id="pw-input" placeholder="Enter Your Secret Password" aria-label="Password Input" required />
                 <br>
                 
                 <p id="error-msg" class="error-msg hidden">Wrong password, try again my love! ❤️</p>
             </div>
         </div>
-            <button onclick="checkPassword()" aria-label="Check password and unlock surprise">Unlock 🔓</button>
+            <button onclick="checkPassword()">Unlock 🔓</button>
         <div id="success-section" class="hidden">
             <h2>🎉 Welcome, Nandini Sharma! 🎉</h2>
             <p style="font-size: 1.3rem;">Get ready for something magical from Aadi!</p>
@@ -181,7 +181,8 @@ function checkPassword() {
                     passwordSection.classList.add('hidden');
                     successSection.classList.remove('hidden');
                                     document.querySelector('.nav-menu').classList.remove('hidden');
-                                    document.querySelector('.nav-dot-container').classList.remove('hidden');
+                                    document.querySelector('.212
+                ').classList.remove('hidden');
                     errorMsg.classList.add('hidden');
                 } else {
                     errorMsg.textContent = 'Wrong password, try again my love! ❤️';
@@ -208,12 +209,6 @@ function checkPassword() {
         });
     </script>
 
-        <!-- Page Navigation Dots -->
-    <div class="nav-dot-container hidden">
-        <div class="nav-dot active" data-tooltip="Home" onclick="window.location.href='index.html'"></div>
-        <div class="nav-dot" data-tooltip="Love Letters" onclick="window.location.href='page2.html'"></div>
-        <div class="nav-dot" data-tooltip="Our Memories" onclick="window.location.href='page3.html'"></div>
-        <div class="nav-dot" data-tooltip="Final Surprise" onclick="window.location.href='page4.html'"></div>
-    </div>
+
 </body>
 </html>
